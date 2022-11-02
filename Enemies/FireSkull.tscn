@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Enemies/FireSkull.gd" type="Script" id=1]
+[ext_resource path="res://Assets/FireSkull/skull.png" type="Texture" id=2]
+
+[sub_resource type="CircleShape2D" id=45]
+
+[node name="FireSkull" type="KinematicBody2D"]
+position = Vector2( 200, 0 )
+script = ExtResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 48, 208 )
+scale = Vector2( 0.015, 0.0158333 )
+texture = ExtResource( 2 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2( 48, 208 )
+scale = Vector2( 0.015, 0.0158333 )
+polygon = PoolVector2Array( -73, -1126, -71.1, -1054, 0.800049, -1054, 4, -1050.8, 4, -823.1, -71, -821.1, -71, -679, 2, -679, 4, -454, 226.9, -454, 228.9, -379, 376.9, -379, 378.9, -304, 526.9, -304, 528.9, -229, 600.8, -229, 604, -225.8, 604, -78.9, 679, -76.9, 679, 452, 676, 452, 604, 453.9, 604, 525.8, 600.8, 529, 529, 529, 529, 600.8, 525.8, 604, 454, 604, 454, 675.8, 450.8, 679, 304, 679, 304, 826.9, 229, 828.9, 229, 976.9, 154, 978.9, 154, 1125.8, 150.8, 1129, -600.8, 1129, -604, 1125.8, -604, 678.9, -679, 676.9, -679, -2, -676, -2, -604, -3.90002, -604, -152, -601, -152, -529, -153.9, -529, -302, -526, -302, -454, -303.9, -454, -375.8, -450.8, -379, -303.9, -379, -301.9, -454, -229, -454, -229, -676.9, -154, -678.9, -154, -821.1, -229, -823.1, -229, -1052, -226, -1052, -154, -1053.9, -154, -1126.2, -152, -1127.2, -152, -1129, -73, -1129 )
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2( 48, 208 )
+scale = Vector2( 2, 2 )
+shape = SubResource( 45 )
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
