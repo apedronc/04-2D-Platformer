@@ -1,12 +1,15 @@
 extends KinematicBody2D
-
-var start_position = Vector2(4300, -100)
+export var damage = 1
+var start_position = [
+	Vector2(600,-200)
+	,Vector2(500,-100)
+]
 var player = null
 var nav = null
-var speed = 250
+var speed = 300
 
 func _ready():
-	position = start_position
+	position = start_position[Global.level-1]
 
 func _physics_process(_delta):
 	nav = get_node_or_null("/root/Game/Navigation2D")
