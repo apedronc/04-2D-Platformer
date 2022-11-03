@@ -80,5 +80,11 @@ func set_wall_raycasts(is_enabled):
 	$Wall/Left.enabled = is_enabled
 	$Wall/Right.enabled = is_enabled
 
+func do_damage(d):
+	Global.decrease_health(d)
+	if Global.health <= 0:
+		die()
+
 func die():
+	Global.decrease_lives(1)
 	queue_free()

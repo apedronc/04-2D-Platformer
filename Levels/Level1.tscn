@@ -16,7 +16,7 @@
 [ext_resource path="res://Levels/Door.gd" type="Script" id=14]
 [ext_resource path="res://Enemies/Ghost2.gd" type="Script" id=15]
 [ext_resource path="res://Coin.tscn" type="PackedScene" id=16]
-[ext_resource path="res://HUD/Menu.gd" type="Script" id=17]
+[ext_resource path="res://HUD/Menu.tscn" type="PackedScene" id=17]
 
 [sub_resource type="NavigationPolygon" id=42]
 vertices = PoolVector2Array( 3328, -192, 3328, -256, 3392, -320, 3392, 512, 3072, -64, 3072, -128, 3136, -192, 3200, 64, 3136, 64, 1920, 192, 1920, 384, 1856, 320, 1856, 64, 3328, 320, 3264, 320, 3200, 128, 3328, 384, 3264, 512, 3264, 384, 64, 256, 64, -648, 3712, -640, 1216, 64, 3712, -320, 3264, 576, 3136, 576, 3136, 384, 3136, 128, 3072, 384, 3072, 576, 3008, 576, 3008, 512, 2944, 512, 2944, 448, 2880, 448, 2880, 384, 2816, 384, 2816, 448, 2752, 448, 2048, 320, 1984, 192, 2752, 512, 2688, 512, 2112, 448, 2688, 576, 2112, 576, 2048, 448, 1984, 320, 1984, 384, 1984, 512, 1088, 320, 704, 576, 896, 384, 1024, 320, 896, 192, 1024, 128, 2048, 512, 2048, 576, 832, 384, 704, 448, 640, 448, 640, 256, 832, 192, 2816, -64, 3136, -256, 2816, -128, 1792, 320, 1664, 320, 1792, 64, 1664, 64, 1600, 320, 1472, 320, 1600, 64, 1472, 64, 1408, 64, 1408, 320, 1280, 320, 1280, 64, 1216, 320, 1088, 128 )
@@ -908,24 +908,7 @@ custom_fonts/font = SubResource( 44 )
 text = "Lives"
 valign = 1
 
-[node name="Menu" type="Control" parent="UI"]
-pause_mode = 2
-visible = false
-margin_right = 40.0
-margin_bottom = 40.0
-script = ExtResource( 17 )
-
-[node name="Background" type="ColorRect" parent="UI/Menu"]
-margin_right = 1024.0
-margin_bottom = 600.0
-color = Color( 0.254902, 0, 0, 0.694118 )
-
-[node name="Quit" type="Button" parent="UI/Menu"]
-margin_left = 462.0
-margin_top = 261.0
-margin_right = 562.0
-margin_bottom = 301.0
-text = "Quit Game"
+[node name="Menu" parent="UI" instance=ExtResource( 17 )]
 
 [node name="Coins" type="Node2D" parent="."]
 
@@ -949,4 +932,3 @@ position = Vector2( 2856, -576 )
 
 [connection signal="body_entered" from="Door" to="Door" method="_on_Door_body_entered"]
 [connection signal="child_entered_tree" from="Door/CollisionPolygon2D" to="Door" method="_on_CollisionPolygon2D_child_entered_tree"]
-[connection signal="pressed" from="UI/Menu/Quit" to="UI/Menu" method="_on_Quit_pressed"]

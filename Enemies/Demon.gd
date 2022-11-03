@@ -1,7 +1,7 @@
 extends KinematicBody2D
 
-export var constraint_left = Vector2(0,0)
-export var constraint_right = Vector2(100,0) # patrols
+export var constraint_left = Vector2(1050,264)
+export var constraint_right = Vector2(1050,-104) # patrols
 export var speed = 3
 export var damage = 1
 
@@ -18,6 +18,8 @@ func _physics_process(_delta):
 		$Tween.interpolate_property(self, "position", position, constraint, speed, Tween.TRANS_EXPO,Tween.EASE_IN)
 		$Tween.start()
 
+
 func _on_Area2D_body_entered(body):
 	if body.name == "Player":
 		body.do_damage(damage)
+

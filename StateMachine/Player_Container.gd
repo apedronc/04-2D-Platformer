@@ -10,3 +10,4 @@ func _process(_delta):
 		player.position = starting_position
 		player.name = 'Player'
 		add_child(player)
+

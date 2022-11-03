@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=2]
+[gd_scene load_steps=52 format=2]
 
 [ext_resource path="res://Assets/Tiles/old-dark-castle-interior-tileset.png" type="Texture" id=1]
 [ext_resource path="res://Assets/Tiles/props1.png" type="Texture" id=2]
@@ -18,6 +18,8 @@
 [ext_resource path="res://Assets/door.png" type="Texture" id=16]
 [ext_resource path="res://Levels/Door2.gd" type="Script" id=17]
 [ext_resource path="res://Coin.tscn" type="PackedScene" id=18]
+[ext_resource path="res://Enemies/Demon.tscn" type="PackedScene" id=19]
+[ext_resource path="res://HUD/Menu.tscn" type="PackedScene" id=20]
 
 [sub_resource type="NavigationPolygon" id=52]
 vertices = PoolVector2Array( 688, 224, 688, 200, 704, 0, 704, 512, 640, 200, 560, 160, 560, 144, 624, 32, 560, 400, 512, 400, 512, 368, 640, 224, 640, 512, 560, 416, 576, 32, 512, 144, 624, 16, 512, 336, 64, -640, 3712, -640, 3712, -384, 3648, -384, 3648, -192, 3456, -192, 3456, -128, 3448, -128, 3392, -128, 3392, -64, 3328, -64, 3328, 0, 3264, 0, 3264, 64, 3432, 64, 3432, 320, 3072, 320, 3072, 552, 3008, 552, 3008, 320, 2240, 320, 2240, 560, 2112, 560, 2112, 320, 960, 320, 960, 192, 896, 192, 896, 64, 832, 64, 832, 0, 448, 368, 72, 576, 640, 576, 512, 416, 448, 336, 512, 160, 512, 152, 576, 16 )
@@ -929,6 +931,25 @@ speed = 2
 position = Vector2( 864, -576 )
 script = ExtResource( 15 )
 
+[node name="Demon" parent="Enemies" instance=ExtResource( 19 )]
+
+[node name="Demon2" parent="Enemies" instance=ExtResource( 19 )]
+position = Vector2( 2064, -48 )
+constraint_left = Vector2( 2064, 264 )
+constraint_right = Vector2( 2064, -64 )
+
+[node name="Demon3" parent="Enemies" instance=ExtResource( 19 )]
+position = Vector2( 2832, -120 )
+constraint_left = Vector2( 2832, 264 )
+constraint_right = Vector2( 2832, -120 )
+speed = 1
+
+[node name="Demon4" parent="Enemies" instance=ExtResource( 19 )]
+position = Vector2( 3184, -576 )
+constraint_left = Vector2( 3184, 256 )
+constraint_right = Vector2( 3184, -576 )
+speed = 2
+
 [node name="Coins" type="Node2D" parent="."]
 
 [node name="Coin" parent="Coins" instance=ExtResource( 18 )]
@@ -987,6 +1008,8 @@ custom_colors/font_color = Color( 0.992157, 0.866667, 0.384314, 1 )
 custom_fonts/font = SubResource( 44 )
 text = "Lives"
 valign = 1
+
+[node name="Menu" parent="UI" instance=ExtResource( 20 )]
 
 [node name="Door2" type="Area2D" parent="."]
 script = ExtResource( 17 )
